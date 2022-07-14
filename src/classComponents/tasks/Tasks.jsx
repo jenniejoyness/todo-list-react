@@ -24,16 +24,14 @@ class Tasks extends React.Component {
     }
 
     onAdd = () => {
-        const newState = this.state
-        const uncompletedLength = newState.uncompletedLength + 1
+        const taskList = this.state.taskList
+        const uncompletedLength = this.state.uncompletedLength + 1
         const counter = this.state.counter + 1
         const id = counter
 
-        newState.taskList[id] = { id, completed: false, text: '' }
-        newState.counter = counter
-        newState.uncompletedLength = uncompletedLength
+        taskList[id] = { id, completed: false, text: '' }
 
-        this.setState(newState)
+        this.setState({ taskList, counter, uncompletedLength})
     }
 
     onChange = ({ id, property, value }) => {
