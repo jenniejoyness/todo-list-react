@@ -1,7 +1,7 @@
 import './App.css'
-import Header from './classComponents/header/Header'
+import Header from './components/header/Header'
 import React from 'react'
-import Tasks from './classComponents/tasks/Tasks'
+import Tasks from './components/tasksFunction/Tasks'
 
 class App extends React.Component {
 
