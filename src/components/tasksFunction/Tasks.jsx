@@ -15,22 +15,20 @@ function Tasks () {
 
     const onDelete = (task) => {
         const newTaskList = taskList
-        const newUncompletedLength = task.completed ? uncompletedLength : uncompletedLength - 1
         delete newTaskList[task.id]
-        setTaskList(newTaskList)
-        setUncompletedLength(newUncompletedLength)
+        setTaskList({...newTaskList})
+        if (!task.completed) {
+            setUncompletedLength(uncompletedLength => uncompletedLength - 1)
+        }
     }
 
     const onAdd = () => {
-        const newTaskList = taskList
-        const newUncompletedLength = uncompletedLength + 1
-        const newCounter = counter + 1
-        const id = newCounter
+        const id = counter + 1
+        const newTask = { id, completed: false, text: '' }
 
-        newTaskList[id] = { id, completed: false, text: '' }
-        setTaskList(newTaskList)
-        setUncompletedLength(newUncompletedLength)
-        setCounter(newCounter)
+        setTaskList(taskList => ({...taskList, [id]: newTask }))
+        setUncompletedLength(uncompletedLength => uncompletedLength + 1)
+        setCounter(counter => counter + 1)
     }
 
     const onChange = ({ id, value }) => {
@@ -42,8 +40,7 @@ function Tasks () {
         const newTaskList = taskList
         newTaskList[id].completed = !taskList[id].completed
         setTaskList(newTaskList)
-        const newUncompletedLength = checked ? uncompletedLength - 1 : uncompletedLength + 1
-        setUncompletedLength(newUncompletedLength)
+        setUncompletedLength(uncompletedLength => checked ? uncompletedLength - 1 : uncompletedLength + 1)
     }
 
 
