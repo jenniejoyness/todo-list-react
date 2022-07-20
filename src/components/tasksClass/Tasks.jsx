@@ -16,7 +16,7 @@ class Tasks extends React.Component {
     }
 
     onDelete = (task) => {
-        const newState = this.state
+        const newState = {...this.state}
         const uncompletedLength = task.completed ? newState.uncompletedLength : newState.uncompletedLength - 1
         delete newState.taskList[task.id]
         newState.uncompletedLength = uncompletedLength
@@ -24,7 +24,7 @@ class Tasks extends React.Component {
     }
 
     onAdd = () => {
-        const taskList = this.state.taskList
+        const taskList = {...this.state.taskList}
         const uncompletedLength = this.state.uncompletedLength + 1
         const counter = this.state.counter + 1
         const id = counter
@@ -35,7 +35,7 @@ class Tasks extends React.Component {
     }
 
     onChange = ({ id, property, value }) => {
-        const newState = this.state
+        const newState = {...this.state}
         if (property === 'completed') {
             newState.uncompletedLength = value ? newState.uncompletedLength -1 : newState.uncompletedLength + 1
         }

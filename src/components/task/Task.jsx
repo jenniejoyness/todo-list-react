@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
 
-export const Task = (props) => {
+const Task = (props) => {
     return (
         <div>
             <input type='checkbox'
