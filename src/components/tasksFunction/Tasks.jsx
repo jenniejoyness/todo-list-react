@@ -37,7 +37,7 @@ function Tasks () {
     }
 
     const onCheck = ({ id, checked }) => {
-        const newTaskList = taskList
+        const newTaskList = {...taskList}
         newTaskList[id].completed = !taskList[id].completed
         setTaskList(newTaskList)
         setUncompletedLength(uncompletedLength => checked ? uncompletedLength - 1 : uncompletedLength + 1)
